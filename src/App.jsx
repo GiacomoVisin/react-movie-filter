@@ -10,23 +10,32 @@ function App() {
   // for select the genre
   const [selectedGenre, setSelectedGenre] = useState('');
 
-  //for the filtered movies
+  // for the filtered movies
   const [filteredMovies, setFilteredMovies] = useState(InitialMovies);
 
+  // for filter the film by title
+  const [searchTitle, setSearchTitle] = useState(``)
 
-  const genres = [...new Set (movies.map((movie)=> movie.genre))]
+  const genres = [...new Set(movies.map((movie) => movie.genre))]
 
   // for filtering of the movies
   useEffect(() => {
     let result = movies;
-      
+
 
     if (selectedGenre !== '') {
       result = result.filter(
         (movie) => movie.genre === selectedGenre
       );
-    } setFilteredMovies(result);
-  }, [movies, selectedGenre]);
+    } 
+
+    if (searchTitle !== ``) {
+      result = result.filter((movie) =>
+        movie.title.toLowerCase().includes(searchTitle.toLowerCase())
+      )
+    }setFilteredMovies(result);
+
+  }, [movies, selectedGenre, searchTitle]);
 
 
 
@@ -36,8 +45,8 @@ function App() {
       <select
         value={selectedGenre}
         onChange={(e) => setSelectedGenre(e.target.value)}>
-           <option value={``}> Seleziona Genere </option>
-        {genres.map((genre,i) => (
+        <option value={``}> Seleziona Genere </option>
+        {genres.map((genre, i) => (
           <option key={i} value={genre}>
             {genre}
           </option>
@@ -45,8 +54,11 @@ function App() {
       </select>
 
 
+
+      <input type="text" value={searchTitle} onChange={(e) => setSearchTitle(e.target.value)} />
+
       <ul>
-        {filteredMovies.map((movie,i)=>(
+        {filteredMovies.map((movie, i) => (
           <li key={i}> {movie.title}  </li>
         ))}
       </ul>
