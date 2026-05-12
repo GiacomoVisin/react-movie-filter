@@ -1,0 +1,55 @@
+/*  import for font  */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oswald:wght@200..700&display=swap');
+
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Merriweather", serif;
+
+}
+
+* {
+    background-color: rgba(0, 0, 0, 0.438);
+}
+
+select {
+    padding: 0.2rem;
+    color: rgba(240, 248, 255, 0.432);
+}
+
+input {
+    border-color: rgb(207, 207, 207);
+    background-color: rgba(95, 91, 91, 0.438);
+
+}
+
+ul {
+    padding-bottom: 5rem;
+    padding-top: 4rem;
+
+
+    li {
+        color: rgba(240, 248, 255, 0.432);
+    }
+}
+
+
+
+button {
+    color: rgba(240, 248, 255, 0.432);
+    border-color: rgb(207, 207, 207);
+    position: relative;
+    left: 5%;
+}
+
+.paragraphForm {
+    span{
+    color: rgba(240, 248, 255, 0.432);  
+    }
+}
+
+form{
+    border: 1px solid black;
+    padding: 1rem 2rem;
+}

@@ -19,20 +19,20 @@ function App() {
   function HandleAddMovie(e) {
     e.preventDefault()
 
-     const movieExists = InitialMovies.some(
-    (movie) =>
-      movie.title.toLowerCase() === newTitleFilm.toLowerCase()
-  );
+    const movieExists = InitialMovies.some(
+      (movie) =>
+        movie.title.toLowerCase() === newTitleFilm.toLowerCase()
+    );
 
-  if (movieExists) {
-    alert("There is already a film with this title, please change it!");
-    return;
-  }
+    if (movieExists) {
+      alert("There is already a film with this title, please change it!");
+      return;
+    }
     const newMovie = {
       title: newTitleFilm,
       genre: newGenreFilm
     }
-    
+
 
 
     setInitialMovies([...InitialMovies, newMovie])
@@ -73,32 +73,36 @@ function App() {
   return (
     <>
       <h1> Film List</h1>
-      <select
-        value={selectedGenre}
-        onChange={(e) => setSelectedGenre(e.target.value)}>
-        <option value={``}> Seleziona Genere </option>
-        {genres.map((genre, i) => (
-          <option key={i} value={genre}>
-            {genre}
-          </option>
-        ))}
-      </select>
+      <div className="container mt-5">
+        <select
+          value={selectedGenre}
+          onChange={(e) => setSelectedGenre(e.target.value)}>
+          <option value={``}> Seleziona Genere </option>
+          {genres.map((genre, i) => (
+            <option key={i} value={genre}>
+              {genre}
+            </option>
+          ))}
+        </select>
 
 
 
-      <input type="text" value={searchTitle} onChange={(e) => setSearchTitle(e.target.value)} />
+        <input className="mx-4" type="text" value={searchTitle} onChange={(e) => setSearchTitle(e.target.value)} placeholder="Nome del film" />
 
-      <ul>
-        {filteredMovies.map((movie, i) => (
-          <li key={i}> {movie.title}  </li>
-        ))}
-      </ul>
+        <ul>
+          {filteredMovies.map((movie, i) => (
+            <li key={i}> {movie.title}  </li>
+          ))}
+        </ul>
 
-      <form onSubmit={HandleAddMovie}>
-        <input type="text" value={newTitleFilm} onChange={(e)=> setNewTitleFilm(e.target.value)}  placeholder="type name for new movie"/>
-        <input type="text" value={newGenreFilm} onChange={(e)=> setNewGenreFilm(e.target.value)}   placeholder="type genre for new movie"/>
-        <button> Add new Films</button>
-      </form>
+
+        <form onSubmit={HandleAddMovie}>
+        <div className="paragraphForm"> <span>Form per aggiunta di film  </span>      </div>
+          <input className="mx-4" type="text" value={newTitleFilm} onChange={(e) => setNewTitleFilm(e.target.value)} placeholder="type name for new movie" />
+          <input type="text" value={newGenreFilm} onChange={(e) => setNewGenreFilm(e.target.value)} placeholder="type genre for new movie" />
+          <button> Add new Films</button>
+        </form>
+      </div>
     </>
   )
 }
