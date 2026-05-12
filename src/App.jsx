@@ -36,8 +36,8 @@ function App() {
 
 
     setInitialMovies([...InitialMovies, newMovie])
-    setNewTitle('');
-    setNewGenre('');
+    setNewTitleFilm('');
+    setNewGenreFilm('');
   }
 
 
